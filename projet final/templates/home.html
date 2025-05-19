@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+
+    <div class="container text-white text-center p-5">
+        <h1>Bienvenue sur notre site de recensement</h1>
+        <p>Découvrez, ajoutez et classez les espèces locales.</p>
+        <a class="btn btn-light" href="{{ url_for('categories') }}">Voir les catégories</a> 
+
+    </div>
+
+{%endblock%}

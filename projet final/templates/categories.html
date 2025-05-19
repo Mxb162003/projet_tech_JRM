@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}Ajouter une espèce{% endblock %}
+
+{% block content %}
+<div class="container p-4">
+    <h2>Ajouter une espèce</h2>
+    <form method="post" enctype="multipart/form-data">
+        <input name="nom_commun" placeholder="Nom commun de l'espèce" class="form-control" required><br>
+        <input name="nom_latin" placeholder="Nom latin" class="form-control"><br>
+        <input type="file" name="image" class="form-control"><br>
+        <select name="categorie" class="form-control">
+            <option value="Mammal">Mammifère</option>
+            <option value="Aves">Oiseau</option>
+            <option value="Reptile">Reptile</option>
+            <option value="Amphibian">Amphibien</option>
+            <option value="Fish">Poisson</option>
+        </select><br>
+        <textarea name="description" class="form-control" placeholder="Description"></textarea><br>
+        <button type="submit" class="btn btn-success">Ajouter</button>
+    </form>
+
+    <hr>
+    <h3>Espèces enregistrées</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for espece in especes %}
+        <div class="col">
+            <div class="card h-100">
+                {% if espece.image %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ espece.image) }}" class="card-img-top" alt="Image de {{ espece.nom_commun }}">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ espece.nom_commun }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><em>{{ espece.nom_latin }}</em></h6>
+                    <p class="card-text">{{ espece.description }}</p>
+                    <span class="badge bg-primary">{{ espece.categorie }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>    
+</div>
+{% endblock %}

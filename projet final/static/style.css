@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url("/static/snail.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
+    margin: 0;
+}
